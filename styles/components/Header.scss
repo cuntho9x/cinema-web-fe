@@ -1,0 +1,219 @@
+/* 📁 styles/components/Header.scss */
+
+.header {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo-link img {
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .nav {
+    display: flex;
+    margin: right 10%; ;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+
+
+    .nav-item {
+      position: relative;
+
+      &:hover .header-link {
+        color: #ec8642;
+      }
+      
+
+      .header-link{
+        display: flex;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 1.6rem;
+        color: #333;
+        justify-content: center;
+        align-items: center;
+
+        .dropdown-icon{
+          margin-left: 2px;
+          height: 1rem;
+          width: 1rem;
+          color: #817e7e;
+        }
+
+        &:hover .dropdown-icon {
+                color: #ec8642;
+              }
+
+      }
+
+      &:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        min-width: 220px;
+        padding: 8px 0;
+        z-index: 999;
+        list-style: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0s 0.3s;
+
+        li {
+          padding: 8px 16px;
+
+          a {
+            margin-top: 3px;
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            color: #333;
+            text-decoration: none;
+            width: 100%;
+
+            &:hover {
+              color: #d62300;
+            }
+          }
+
+          &:hover {
+            background-color: #f5f5f5;
+          }
+        }
+      }
+    }
+
+  }
+
+
+
+  .search {
+    position: relative;
+
+    input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 220px;
+      font-size: 14px;
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      .cart-icon {
+        height: 25px;
+        width: 25px;
+        color: #444;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #d62300;
+        }
+      }
+    }
+
+    .user {
+      position: relative;
+
+      &:hover .user-menu {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        object-fit: cover;
+      }
+
+      .user-menu {
+        position: absolute;
+        top: 48px;
+        right: 0;
+        width: 220px;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        list-style: none;
+        padding: 8px 0;
+        margin: 0;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0s 0.3s;
+
+        li {
+          padding: 8px 16px;
+
+          &:hover {
+            background-color: #f5f5f5;
+          }
+
+          a {
+            display: flex;
+            align-items: center;
+            color: #333;
+            text-decoration: none;
+            font-size: 1rem;
+
+            svg {
+              height: 16px;
+              width: 16px;
+              margin-right: 8px;
+            }
+
+            span {
+              margin-left: 2px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

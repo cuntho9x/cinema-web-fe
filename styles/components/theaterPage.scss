@@ -1,0 +1,158 @@
+.bg-grey{
+  background-color:#efefef ;
+}
+
+.theater-page {
+  max-width: 1300px;
+  padding: 20px;
+  margin: auto;
+  background-color:#ffffff;
+
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    border-left: 4px solid #005bac;
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+
+  .date-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #005bac ;
+    .tab-button {
+      background: white;
+      border: 1px solid #ffffff;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+
+      &.active {
+        background-color: #005bac;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+
+ .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+    justify-content: start;
+    justify-items: center;
+
+  }
+
+  
+
+
+  .movie-card {
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .movie-poster {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .movie-badge {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        display: flex;
+        gap: 6px;
+
+        .rating, .age {
+          font-size: 12px;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-weight: bold;
+          color: #fff;
+        }
+
+        .rating {
+          background-color: #fbbf24; // yellow
+        }
+
+        .age {
+          background-color: #f97316; // orange
+        }
+      }
+    }
+
+    .movie-title {
+      margin-top: 6px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+  }
+
+
+}
+
+.theater-info {
+    max-width: 1300px;
+    padding: 20px;
+    margin: auto;
+    background-color:#ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 40px;
+
+    .ticket-pricing {
+      flex: 1 1 400px;
+      img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 8px;
+      }
+    }
+
+    .theater-details {
+      flex: 1 1 400px;
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid #0055aa;
+        padding-left: 12px;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .map {
+        margin: 1rem 0;
+        iframe {
+          border-radius: 8px;
+        }
+      }
+    }
+  }

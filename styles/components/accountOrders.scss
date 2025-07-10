@@ -1,0 +1,63 @@
+.orders-page {
+  padding: 2rem;
+
+  .title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .filter-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+
+    select, input[type="month"] {
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  }
+
+  .orders-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+
+    thead {
+      background: #d0d1da;
+
+      th {
+        padding: 0.75rem;
+        font-weight: 500;
+        font-size: 0.95rem;
+        text-align: left;
+        color: #111;
+      }
+    }
+
+    tbody {
+      td {
+        padding: 0.75rem;
+        border-top: 1px solid #eee;
+        font-size: 0.95rem;
+      }
+
+      .total-label {
+        font-weight: bold;
+        text-align: right;
+        color: #000;
+      }
+
+      .total-point {
+        font-weight: bold;
+        color: #000;
+      }
+    }
+  }
+}

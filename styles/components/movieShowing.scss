@@ -1,0 +1,68 @@
+.now-showing {
+  max-width: 1300px;
+  margin: 50px auto;
+  padding: 0 20px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid #0055cc;
+    padding-left: 10px;
+  }
+
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .movie-card {
+    text-decoration: none;
+    color: inherit;
+
+    .poster {
+      position: relative;
+
+      img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .age {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: orange;
+        padding: 2px 6px;
+        font-size: 12px;
+        border-radius: 4px;
+        color: white;
+      }
+
+      .rating {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 13px;
+
+        .star {
+          color: yellow;
+          margin-right: 4px;
+        }
+      }
+    }
+
+    .title {
+      margin-top: 10px;
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+  }
+}
