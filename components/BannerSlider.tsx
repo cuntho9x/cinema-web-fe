@@ -11,17 +11,17 @@ const slides = [
   {
     img: '/ut-lan8.jpg',
     alt: 'Út Lan',
-    link: '/movies/ut-lan8'
+    link: '/movie/ut-lan'
   },
   {
     img: '/elio.jpg',
     alt: 'Elio',
-    link: '/movies/elio'
+    link: '/movie/elio'
   },
   {
     img: '/f1.JPG',
     alt: 'f1',
-    link: '/movies/f1'
+    link: '/movie/f1'
   }
 ];
 

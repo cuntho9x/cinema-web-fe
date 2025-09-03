@@ -1,4 +1,6 @@
 // 📁 components/Header.tsx
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import '@/styles/components/Header.scss';
@@ -11,13 +13,16 @@ import {
   faChevronDown
 } from '@fortawesome/free-solid-svg-icons';
 
+import useAuth from '@/hooks/useAuth';
+
 const userMenu = [
   { to: '/account/infor', icon: <FontAwesomeIcon icon={faUser} />, title: 'Manage My Account' },
   { to: '/account/orders', icon: <FontAwesomeIcon icon={faCartShopping} />, title: 'My Order' },
-  { to: '/logout', icon: <FontAwesomeIcon icon={faSignOutAlt} />, title: 'Logout' }
+  // { to: '/logout', icon: <FontAwesomeIcon icon={faSignOutAlt} />, title: 'Logout' }
 ];
 
 export default function Header() {
+  const { user, logout } = useAuth();
   return (
     <header className="header">
       <div className="inner">
@@ -42,7 +47,7 @@ export default function Header() {
           </div>
 
           <div className="nav-item">
-            <Link className="header-link" href="/products">
+            <Link className="header-link" href="/food">
               Đồ Ăn & Nước
             </Link>
           </div>
@@ -81,26 +86,33 @@ export default function Header() {
         {/* Action buttons */}
         <div className="action">
           {/* Người dùng */}
-          <div className="user">
-            <Image
-              src="/avatar.JPG"
+          {user ? (
+            <div className="user">
+              <Image
+              src={user.avatar_img || '/default-avatar.png'}
               className="user-avatar"
-              alt="Ngô Đức Thắng"
+              alt={user.full_name}
               width={40}
               height={40}
             />
-
-            <ul className="user-menu">
-              {userMenu.map((item, index) => (
-                <li key={index}>
-                  <Link href={item.to}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
+              <ul className="user-menu">
+                {userMenu.map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.to}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </Link>
+                  </li>
+                ))}
+                <li onClick={logout} style={{ cursor: 'pointer' }}>
+                  {<FontAwesomeIcon icon={faSignOutAlt} />}
+                  <span>Logout</span>
                 </li>
-              ))}
-            </ul>
-          </div>
+              </ul>
+            </div>
+          ) : (
+            <Link href="/login" className="signin-btn">Đăng nhập</Link>
+          )}
         </div>
       </div>
     </header>

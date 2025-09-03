@@ -154,7 +154,7 @@ export default function SeatSelection() {
       </div>
 
       <div className="right-info">
-        <h4>BHD Star The Garden</h4>
+        <h4>MAGICIAN Star The Garden</h4>
         <p><strong>MARACUDA: NHÓC QUẬY RỪNG XANH</strong></p>
         <p>Suất chiếu: 17h15 - Screen 6 - 11/7/2025</p>
 

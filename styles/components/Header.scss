@@ -214,6 +214,34 @@
         }
       }
     }
-
+    .signin-btn {
+      background: linear-gradient(135deg, #5f57f8, #3b82f6); 
+      color: #fff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4); 
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
+      text-decoration: none;
+    }
+    
+    .signin-btn:hover {
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #4338ca, #2563eb); 
+    }
+    
+    .signin-btn:active {
+      transform: scale(0.97);
+      box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
+    }
+    
   }
 }
+
+

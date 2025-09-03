@@ -1,0 +1,95 @@
+.login-wrapper {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .background-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.6;
+  }
+  
+  .background-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.6);
+  }
+  
+  .login-card {
+    position: relative;
+    z-index: 1;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    max-width: 700px;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .login-card h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #333;
+  }
+  
+  .login-card p {
+    color: #666;
+    margin: 0;
+  }
+  
+  .login-card input,
+  .login-card select {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  .login-card input:focus,
+  .login-card select:focus {
+    border-color: #4797ff;
+  }
+  
+  .login-card button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #51a6f5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .login-card button:hover {
+    background-color: #3191ff;
+  }
+  
+  .login-card .links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+  }
+  
+  .login-card .links a {
+    color: #e43838;
+    text-decoration: none;
+  }
+  
+  .login-card .links a:hover {
+    text-decoration: underline;
+  }
+  
