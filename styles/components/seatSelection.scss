@@ -18,17 +18,71 @@
     flex: 2;
     background: white;
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+    max-height: calc(100vh - 100px);
   }
 
   // Step 1: Seat selection
+  .seat-legend-with-price {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    flex-wrap: wrap;
+
+    .legend-price-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .legend-seat {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .legend-text {
+        font-weight: 500;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .legend-price {
+        font-weight: bold;
+        font-size: 14px;
+        color: #000;
+      }
+    }
+  }
+
   .screen-label {
     text-align: center;
     font-weight: bold;
     margin-bottom: 20px;
     font-size: 18px;
     color: #4caf50;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #4caf50 20%, #4caf50 80%, transparent);
+      z-index: -1;
+    }
   }
 
   .legend {
@@ -41,6 +95,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      font-size: 13px;
 
       .seat {
         width: 20px;
@@ -54,24 +109,75 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    justify-content: flex-start;
+    gap: 2px;
+    overflow: hidden;
+    flex: 1;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 0;
+    // Tính toán scale động dựa trên viewport và số lượng seats
+    // Sẽ được điều chỉnh bằng JavaScript hoặc CSS variables
 
     .seat-row {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      gap: 2px;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 100%;
+
+      .row-label {
+        width: 16px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 10px;
+        color: #333;
+        flex-shrink: 0;
+        margin-right: 3px;
+      }
 
       .seat {
-        width: 26px;
-        height: 26px;
-        border-radius: 4px;
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        border-radius: 3px;
         cursor: pointer;
         transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 7px;
+        font-weight: 600;
+        color: #333;
+        flex-shrink: 0;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        border: 1px solid rgba(0, 0, 0, 0.05);
 
-        &:hover {
-          transform: scale(1.1);
+        &.empty-seat {
+          cursor: default;
+          background: transparent !important;
+          border: none;
+        }
+
+        &:hover:not(.empty-seat) {
+          transform: scale(1.2);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          z-index: 10;
+          position: relative;
         }
       }
     }
+
+    // Scale sẽ được tính toán động bằng inline style từ component
+    // Fallback CSS cho các trường hợp không có JS
+    transform: scale(0.7);
+    transform-origin: top center;
   }
 
   .right-info {
@@ -134,68 +240,205 @@
   }
   
   .right-info {
-  font-size: 13px;
+    font-size: 13px;
 
-  // Áp dụng layout hai cột cho từng dòng thông tin (vé + combo)
-  p {
-    display: flex;
-    justify-content: space-between;
-    margin: 4px 0;
-    line-height: 1.4;
-  }
+    // Áp dụng layout hai cột cho từng dòng thông tin (vé + combo)
+    p {
+      display: flex;
+      justify-content: space-between;
+      margin: 4px 0;
+      line-height: 1.4;
+    }
 
-  // Dòng chứa số lượng + combo sẽ đậm hơn nhẹ
-  p strong {
-    font-weight: 600;
-  }
+    // Dòng chứa số lượng + combo sẽ đậm hơn nhẹ
+    p strong {
+      font-weight: 600;
+    }
 
-  // Dấu gạch phân cách
-  p + p::after {
-    content: "";
-    display: block;
-    border-top: 1px dashed #ccc;
-    margin: 6px 0 4px;
-  }
+    // Dấu gạch phân cách
+    p + p::after {
+      content: "";
+      display: block;
+      border-top: 1px dashed #ccc;
+      margin: 6px 0 4px;
+    }
 
-  // Tổng tiền nổi bật
-  .total,
-  p.total {
-    font-size: 15px;
-    font-weight: bold;
-    margin-top: 8px;
-    text-align: right;
+    // Tổng tiền nổi bật
+    .total,
+    p.total {
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 8px;
+      text-align: right;
+    }
+
+    // Ticket info với dropdown
+    .ticket-info {
+      .ticket-item-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+
+        p {
+          flex: 1;
+          margin: 0;
+        }
+
+        .dropdown-btn {
+          background: none;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          padding: 4px 8px;
+          font-size: 11px;
+          color: #666;
+          cursor: pointer;
+          transition: all 0.2s;
+          white-space: nowrap;
+
+          &:hover {
+            background: #f5f5f5;
+            border-color: #60c280;
+            color: #60c280;
+          }
+        }
+      }
+
+      .dropdown-list {
+        margin-top: 8px;
+        padding: 8px;
+        background: #f9f9f9;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+        max-height: 200px;
+        overflow-y: auto;
+
+        p {
+          margin: 4px 0;
+          font-size: 12px;
+          color: #555;
+        }
+      }
+    }
+
+    // Combo summary với dropdown
+    .combo-summary {
+      .combo-item-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+
+        p {
+          margin: 0;
+          flex: 1;
+        }
+
+        .dropdown-btn {
+          background: none;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          padding: 4px 8px;
+          font-size: 11px;
+          color: #666;
+          cursor: pointer;
+          transition: all 0.2s;
+          white-space: nowrap;
+
+          &:hover {
+            background: #f5f5f5;
+            border-color: #60c280;
+            color: #60c280;
+          }
+        }
+      }
+
+      .dropdown-list {
+        margin-top: 8px;
+        padding: 8px;
+        background: #f9f9f9;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+        max-height: 200px;
+        overflow-y: auto;
+
+        .combo-detail {
+          display: flex;
+          justify-content: space-between;
+          margin: 4px 0;
+          font-size: 12px;
+          color: #555;
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
   }
-}
 
 // chưa fix
 
 
   // Step 2: Combo section
   .combo-list {
+    max-height: calc(3 * 120px); // Giới hạn hiển thị 3 items
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 5px;
+    
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+      
+      &:hover {
+        background: #555;
+      }
+    }
+
     .combo-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 15px 0;
       border-bottom: 1px solid #eee;
+      min-height: 100px;
 
       img {
         width: 80px;
         height: auto;
         margin-right: 15px;
+        flex-shrink: 0;
+        object-fit: cover;
+        border-radius: 8px;
       }
 
       .combo-info {
         flex: 1;
+        min-width: 0;
 
         h4 {
           margin: 0;
           font-size: 16px;
+          margin-bottom: 4px;
         }
 
         .price {
           margin-top: 5px;
           color: #888;
+          font-weight: bold;
+          font-size: 14px;
 
           .original {
             text-decoration: line-through;
@@ -212,6 +455,8 @@
       .quantity {
         display: flex;
         align-items: center;
+        flex-shrink: 0;
+        margin-left: 10px;
 
         button {
           width: 32px;
@@ -222,11 +467,21 @@
           border: none;
           font-size: 18px;
           cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background-color 0.2s;
+
+          &:hover {
+            background-color: #4cb06b;
+          }
         }
 
         span {
           margin: 0 10px;
           font-weight: bold;
+          min-width: 20px;
+          text-align: center;
         }
       }
     }
@@ -376,3 +631,4 @@ button {
     color: white;
   }
 }
+

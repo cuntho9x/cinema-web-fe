@@ -30,9 +30,17 @@ export default function NowShowingMovies() {
         });
         if (!res.ok) throw new Error('Failed to fetch now showing movies');
         const data = await res.json();
-        setMovies(data);
+        // Handle both object format { movies: [] } and array format
+        if (data && typeof data === 'object' && 'movies' in data) {
+          setMovies(Array.isArray(data.movies) ? data.movies : []);
+        } else if (Array.isArray(data)) {
+          setMovies(data);
+        } else {
+          setMovies([]);
+        }
       } catch (error) {
         console.error('Error fetching nowShowing movies:', error);
+        setMovies([]);
       }
     }
 
@@ -45,15 +53,15 @@ export default function NowShowingMovies() {
         <h2>Phim Đang Chiếu</h2>
       </div>
       <div className="movie-grid">
-        {movies.map((movie) => (
+        {Array.isArray(movies) && movies.length > 0 ? movies.map((movie) => (
           <div key={movie.movie_title_url} className="movie-card">
             <Link href={`/movie/${movie.movie_title_url}`}>
               <div className="poster-wrapper">
                 <Image
                   src={
                     movie.movie_poster.startsWith('/')
-                      ? movie.movie_poster
-                      : `/${movie.movie_poster}`
+                      ? (movie.movie_poster.startsWith('/movie/') ? movie.movie_poster : `/movie${movie.movie_poster}`)
+                      : `/movie/${movie.movie_poster}`
                   }
                   alt={movie.movie_title}
                   width={220}
@@ -104,7 +112,11 @@ export default function NowShowingMovies() {
               </span>
             </div>
           </div>
-        ))}
+        )) : (
+          <div style={{ padding: '2rem', textAlign: 'center', color: '#666' }}>
+            Không có phim đang chiếu nào.
+          </div>
+        )}
       </div>
 
       {trailerUrl && (

@@ -49,8 +49,10 @@ export default function ReviewSection() {
             {filteredArticles[0].article_thumbnail && (
               <Image
                 src={filteredArticles[0].article_thumbnail.startsWith('/')
-                  ? filteredArticles[0].article_thumbnail
-                  : `/${filteredArticles[0].article_thumbnail}`}
+                  ? (filteredArticles[0].article_thumbnail.startsWith('/article/') 
+                      ? filteredArticles[0].article_thumbnail 
+                      : `/article${filteredArticles[0].article_thumbnail}`)
+                  : `/article/${filteredArticles[0].article_thumbnail}`}
                 alt={filteredArticles[0].article_title}
                 width={800}
                 height={450}
@@ -76,8 +78,10 @@ export default function ReviewSection() {
                   <Image
                     src={
                       article.article_thumbnail.startsWith('/')
-                        ? article.article_thumbnail
-                        : `/${article.article_thumbnail}`
+                        ? (article.article_thumbnail.startsWith('/article/') 
+                            ? article.article_thumbnail 
+                            : `/article${article.article_thumbnail}`)
+                        : `/article/${article.article_thumbnail}`
                     }
                     alt={article.article_title}
                     width={120}

@@ -17,7 +17,7 @@ const movies = [
   {
     id: 1,
     title: "Bí Kíp Luyện Rồng",
-    image: "/bi-kip-luyen-rong.jpg",
+    image: "/movie/bi-kip-luyen-rong.jpg",
     rating: 9.5,
     date: "02/07",
     age: "K",
@@ -25,7 +25,7 @@ const movies = [
   {
     id: 2,
     title: "M3GAN 2.0",
-    image: "/bi-kip-luyen-rong.jpg",
+    image: "/movie/bi-kip-luyen-rong.jpg",
     rating: 9.4,
     date: "03/07",
     age: "T16",
@@ -42,10 +42,10 @@ export default function TheaterPage() {
   const filteredMovies = movies.filter((movie) => movie.date === selectedDate);
 
   const bannerImages = [
-    "/theaterBanner1.jpg",
-    "/theaterBanner1.jpg",
-    "/theaterBanner1.jpg",
-    "/theaterBanner4.jpg",
+    "/banner/theaterBanner1.jpg",
+    "/banner/theaterBanner2.jpg",
+    "/banner/theaterBanner3.jpg",
+    "/banner/theaterBanner4.jpg",
   ];
 
   const settings = {
@@ -83,7 +83,7 @@ export default function TheaterPage() {
           </select>
         </div>
 
-        <h2 className="section-title">PHIM</h2>
+        {/* <h2 className="section-title">PHIM</h2>
         <div className="date-tabs">
           {days.map((day) => (
             <button
@@ -111,12 +111,12 @@ export default function TheaterPage() {
               <p className="movie-title">{movie.title}</p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       <div className="theater-info">
         <div className="ticket-pricing">
-          <img src="banggiave.jpg" alt="Bảng giá vé" />
+          <img src="/catalog/banggiave.jpg" alt="Bảng giá vé" />
         </div>
         <div className="theater-details">
           <h2>THÔNG TIN CHI TIẾT</h2>

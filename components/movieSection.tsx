@@ -57,7 +57,14 @@ export default function MovieSection({ title, movies }: Props) {
                     className="btn secondary"
                     onClick={(e) => {
                       e.preventDefault();
-                      setTrailerUrl(movie.trailerUrl);
+                      e.stopPropagation();
+                      if (movie.trailerUrl) {
+                        setTrailerUrl(
+                          movie.trailerUrl.startsWith('/')
+                            ? movie.trailerUrl
+                            : `/${movie.trailerUrl}`
+                        );
+                      }
                     }}
                   >
                     ▶ Trailer

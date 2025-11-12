@@ -45,8 +45,8 @@ export default function PromotionsPage() {
             <Image
               src={
                 promo.promotions_img.startsWith('/')
-                  ? promo.promotions_img
-                  : '/' + promo.promotions_img
+                  ? (promo.promotions_img.startsWith('/catalog/') ? promo.promotions_img : `/catalog${promo.promotions_img}`)
+                  : `/catalog/${promo.promotions_img}`
               }
               alt={promo.promotions_name}
               width={400}
@@ -71,8 +71,8 @@ export default function PromotionsPage() {
             <Image
               src={
                 selectedPromo.promotions_img.startsWith('/')
-                  ? selectedPromo.promotions_img
-                  : '/' + selectedPromo.promotions_img
+                  ? (selectedPromo.promotions_img.startsWith('/catalog/') ? selectedPromo.promotions_img : `/catalog${selectedPromo.promotions_img}`)
+                  : `/catalog/${selectedPromo.promotions_img}`
               }
               alt={selectedPromo.promotions_name}
               width={600}

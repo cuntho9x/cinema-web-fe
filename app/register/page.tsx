@@ -41,65 +41,87 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="register-wrapper">
       <div className="background-image">
-        <Image src="/login.jpg" alt="Background" fill priority />
+        <Image src="/banner/login.jpg" alt="Background" fill priority />
       </div>
-      <div className="login-card">
+      <div className="register-card">
         <h2>Đăng ký tài khoản</h2>
+        <p>Tạo tài khoản mới</p>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form autoComplete="off" onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="off"
+            required
+          />
 
-        <input
-          type="text"
-          placeholder="Họ và tên"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Họ và tên"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            autoComplete="off"
+            required
+          />
 
-        <input
-          type="password"
-          placeholder="Mật khẩu"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Mật khẩu"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
+            required
+          />
 
-        <select value={gender} onChange={(e) => setGender(e.target.value)}>
-          <option value="male">Nam</option>
-          <option value="female">Nữ</option>
-          <option value="other">Khác</option>
-        </select>
+          <div className="form-row">
+            <select 
+              value={gender} 
+              onChange={(e) => setGender(e.target.value)}
+              autoComplete="off"
+              required
+            >
+              <option value="male">Nam</option>
+              <option value="female">Nữ</option>
+              <option value="other">Khác</option>
+            </select>
 
-        <input
-          type="text"
-          placeholder="Số điện thoại"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
+            <input
+              type="tel"
+              placeholder="Số điện thoại"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              autoComplete="off"
+              required
+            />
+          </div>
 
-        <input
-          type="date"
-          placeholder="Ngày sinh"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-        />
+          <input
+            type="date"
+            placeholder="Ngày sinh"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+            autoComplete="off"
+            required
+          />
 
-        <input
-          type="text"
-          placeholder="Địa chỉ"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Địa chỉ"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            autoComplete="off"
+            required
+          />
 
-        <button onClick={handleRegister}>Đăng ký</button>
+          <button type="submit">Đăng ký</button>
+        </form>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {success && <p style={{ color: "green" }}>{success}</p>}
+        {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>}
 
         <div className="links">
           <a href="/login">Đã có tài khoản? Đăng nhập</a>

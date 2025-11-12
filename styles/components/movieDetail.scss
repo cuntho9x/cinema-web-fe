@@ -131,7 +131,7 @@
     .date-tabs {
       display: flex;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
 
       .tab-button {
         padding: 0.5rem 1rem;
@@ -139,7 +139,6 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
-        // font-weight: bold;
         text-align: center;
 
         &.active {
@@ -149,32 +148,88 @@
       }
     }
 
-    .cinema {
-      h4 {
+    .theaters-list {
+      margin-top: 1rem;
+
+      .theaters-header {
         font-size: 1.1rem;
-        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0.8rem;
+        padding: 0.5rem 0;
       }
 
-      .showtimes {
+      .theaters-container {
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
 
-        span {
-          font-weight: bold;
+    .cinema-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1rem;
+      background: #fafafa;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.2s ease;
+
+      &:hover {
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .theater-name {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.8rem;
+        color: #222;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #e0e0e0;
+      }
+
+      .format-group {
+        margin-bottom: 0.8rem;
+
+        &:last-child {
+          margin-bottom: 0;
         }
 
-        button {
-          background: #f0f0f0;
-          border: none;
-          padding: 0.4rem 0.8rem;
-          border-radius: 4px;
-          cursor: pointer;
-          transition: 0.3s;
+        .format-label {
+          display: block;
+          font-weight: bold;
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+          color: #333;
+        }
 
-          &:hover {
-            background: #ddd;
+        .showtimes-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+          gap: 0.5rem;
+          margin-bottom: 0.3rem;
+
+          .time-button {
+            background: #f0f0f0;
+            border: none;
+            padding: 0.45rem 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 500;
+            text-align: center;
+            min-width: 65px;
+
+            &:hover {
+              background: #e0e0e0;
+              transform: translateY(-1px);
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            &:active {
+              transform: translateY(0);
+            }
           }
         }
       }
@@ -183,6 +238,72 @@
     .no-schedule {
       color: #999;
       font-style: italic;
+    }
+  }
+
+  .modal-seat-selection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-backdrop {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(2px);
+    }
+
+    .modal-seat-content {
+      position: relative;
+      width: 95%;
+      max-width: 1400px;
+      max-height: 90vh;
+      background: white;
+      border-radius: 12px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      z-index: 10000;
+
+      .close-button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        color: white;
+        font-size: 24px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        line-height: 1;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.8);
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    // Style for SeatSelection component inside modal
+    .seat-wrapper {
+      padding: 20px 30px;
+      padding-top: 60px; // Space for close button
+      max-height: calc(90vh - 60px);
+      overflow-y: auto;
     }
   }
 

@@ -9,17 +9,17 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 
 const slides = [
   {
-    img: '/ut-lan8.jpg',
+    img: '/banner/ut-lan8.jpg',
     alt: 'Út Lan',
     link: '/movie/ut-lan'
   },
   {
-    img: '/elio.jpg',
+    img: '/banner/elio.jpg',
     alt: 'Elio',
     link: '/movie/elio'
   },
   {
-    img: '/f1.JPG',
+    img: '/banner/f1.jpg',
     alt: 'f1',
     link: '/movie/f1'
   }

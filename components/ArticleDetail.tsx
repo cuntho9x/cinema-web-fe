@@ -43,7 +43,9 @@ const ArticleDetail = ({ slug }: Props) => {
       <h1>{article.article_title}</h1>
 
       <Image
-        src={article.article_thumbnail.startsWith("/") ? article.article_thumbnail : `/${article.article_thumbnail}`}
+        src={article.article_thumbnail.startsWith("/") 
+          ? (article.article_thumbnail.startsWith("/article/") ? article.article_thumbnail : `/article${article.article_thumbnail}`)
+          : `/article/${article.article_thumbnail}`}
         alt="Thumbnail"
         width={800}
         height={400}
@@ -53,7 +55,9 @@ const ArticleDetail = ({ slug }: Props) => {
       <p>{article.article_content1}</p>
 
       <Image
-        src={article.article_image1.startsWith("/") ? article.article_image1 : `/${article.article_image1}`}
+        src={article.article_image1.startsWith("/") 
+          ? (article.article_image1.startsWith("/article/") ? article.article_image1 : `/article${article.article_image1}`)
+          : `/article/${article.article_image1}`}
         alt="Image 1"
         width={800}
         height={400}
@@ -63,7 +67,9 @@ const ArticleDetail = ({ slug }: Props) => {
       <p>{article.article_content2}</p>
 
       <Image
-        src={article.article_image2.startsWith("/") ? article.article_image2 : `/${article.article_image2}`}
+        src={article.article_image2.startsWith("/") 
+          ? (article.article_image2.startsWith("/article/") ? article.article_image2 : `/article${article.article_image2}`)
+          : `/article/${article.article_image2}`}
         alt="Image 2"
         width={800}
         height={400}
